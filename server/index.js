@@ -7,7 +7,7 @@ dotenv.config();
 import cors from 'cors'
 import authRouter from './routes/authRoutes.js'
 import userRouter from './routes/userRoutes.js'
-
+import profileRoutes from './routes/profileRoutes.js'
 mongoose.connect(process.env.MONGO_URL)
 .then(() => {
     console.log("Connected to DB");
@@ -34,6 +34,7 @@ app.listen(3000,()=>{
 
 app.use('/api/auth',authRouter)
 app.use('/api/user',userRouter)
+app.use('/api/profile',profileRoutes)
 
 //middleware
 app.use((err,req,res,next)=>{

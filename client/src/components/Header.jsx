@@ -16,13 +16,13 @@ const Header = () => {
             
           </h1>
       </div>
-      <ul className=' flex flex-row gap-2'>
+      <ul className=' flex flex-row gap-3'>
         <Link to={'/'}>
           <li className='hover:bg-yellow-500 text-white text-lg'>Home</li>
         </Link>
-        
-        <li className='hover:bg-blue-50'></li>
-        
+        <Link to={'/earn-coins'}>
+        <li className='hover:bg-yellow-500 text-white text-lg'>Earn Coins</li>
+        </Link>
         <Link to={'/profile'}>  
         {currentUser ? (
           <img className='rounded-full h-7 w-7 object-cover' src={currentUser.avatar} alt='profile' />

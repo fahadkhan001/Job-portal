@@ -5,6 +5,7 @@ import Signup from './pages/Signup'
 import PrivateRoutes from './components/PrivateRoutes'
 import Profile from './pages/Profile'
 import Header from './components/Header'
+import EarnCoins from './pages/EarnCoins'
 
 
 function App() {
@@ -15,7 +16,7 @@ function App() {
     < Header/>
     <Routes>
     <Route path='/' element= {<Home />} />
-    
+    <Route path='/earn-coins' element={<EarnCoins />} />
     <Route path='/sign-in' element={<Login />} />
     <Route path='/sign-up' element={<Signup />} />
     <Route element={<PrivateRoutes />} >

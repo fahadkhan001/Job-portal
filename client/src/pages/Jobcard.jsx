@@ -1,4 +1,5 @@
 import React from 'react'
+import { FaCoins } from "react-icons/fa6";
 
 export default function Jobcard(props) {
   return (
@@ -13,7 +14,7 @@ export default function Jobcard(props) {
             </div>
             <div className='flex flex-col items-center gap-4'>
             <img className='w-[80px] h-[80px] rounded-full object-contain' src={props.logo} alt='logo' />
-                <button className='bg-blue-800 p-3 border border-white rounded-lg text-white hover:scale-105 '>Apply</button>
+                <button className='bg-blue-800 p-3 border flex items-center gap-2 border-white rounded-lg text-white hover:scale-105 '>Apply using 50 Coins <FaCoins className='text-golden' /></button>
                 
             </div>
         </div>

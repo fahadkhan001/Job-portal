@@ -23,7 +23,7 @@ export const signup =async(req,res,next)=>{
             const validUser = await User.findOne({email});
             if(!validUser)return next(errorhandler(404,"User not found"))
             const validpassword = bcryptjs.compareSync(password,validUser.password);
-        if(!validpassword)return next(errorhandler(401,"Invalid password"))
+        if(!validpassword)return  next(errorhandler(401,"Invalid password"))
         const token =  jwt.sign({id:validUser._id},process.env.JWT_SECRET);
             //we dont want pass in response
             const {password:pass, ...rest} = validUser._doc;
