@@ -40,7 +40,7 @@ const Home = () => {
       message.success("Applied successfully!");
     } catch (error) {
       console.error(error);
-      message.error("Failed to apply");
+      message.error("Oops! You don't have sufficient balance");
     }
   };
   
