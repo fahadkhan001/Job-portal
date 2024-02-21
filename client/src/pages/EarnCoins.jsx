@@ -5,8 +5,8 @@ import axios from 'axios'
 import {message} from 'antd'
 
 const EarnCoins = () => {
-    const [totalcoins, setTotalcoins] = useState(0);
-    const [openModal, setOpenModal] = useState(false);
+    const [coins, setCoins] = useState(0);
+    
     
     const [formData,setFormData] = useState({})
     const {currentUser}= useSelector((state)=>state.user)
@@ -22,7 +22,8 @@ const res = await axios.post('/api/profile/register',{
     userid:currentUser._id
 })
   console.log(res.data)
-
+  setCoins(res.data.coins);
+  console.log(coins)
   } catch (error) {
     console.log(error)
   }
@@ -40,7 +41,8 @@ const res = await axios.post('/api/profile/register',{
   return (
     <div className='flex flex-col items-center  text-white'>
         <h1 className='flex gap-2 items-center justify-center text-5xl font-mono mt-5 '>Earn Coins <FaCoins className='text-golden'/>   </h1>
-        <div className='flex justify-center items-center mt-2 font-mono text-xl p-2 border border-white w-[150px] font-extrabold'>{totalcoins}</div>
+        <div className='flex justify-center items-center mt-2 h-11 font-mono text-xl p-2 border border-white gap-3 w-[150px] font-extrabold'>{coins}<FaCoins className='text-golden'/></div>
+
         <div className='flex justify-center bg-slate-500 w-[800px] rounded-xl  p-2 items-center'>
         
         <form className=' flex flex-col gap-3 rounded-lg  w-[500px]' onSubmit={handleSubmit}>
@@ -114,7 +116,6 @@ const res = await axios.post('/api/profile/register',{
         <button className='border rounded-lg border-black text-xl font-bold font-sherif p-3 bg-golden text-black' >Submit</button>
         
         </form>
-        
         </div>
         
     

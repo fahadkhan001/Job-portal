@@ -5,6 +5,10 @@ const profileSchema = new mongoose.Schema({
         type:String,
         required:true
     },
+    coins:{
+        type:Number,
+        default:0
+    },
     name:{
         type:String,
         required:[true,"Name is required"]
