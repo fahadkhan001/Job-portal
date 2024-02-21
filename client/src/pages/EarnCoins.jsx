@@ -39,10 +39,6 @@ useEffect(() => {
 
  const handleSubmit =async(values)=>{
   values.preventDefault();
-  if (totalcoins < 50) {
-    message.error("Not enough coins");
-    return; // Stop further execution of the function
-  }
   try {
 console.log(currentUser._id)
 const res = await axios.post('/api/profile/register',{
