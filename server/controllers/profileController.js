@@ -59,9 +59,7 @@ export const deductcoins=async(req,res,next)=>{
 
     if(!profile) res.status(404).json({message:"Profile not found"});
 
-    if(profile.coins <coinsToDeduct){
-        return res.status(400).json({message:"Not enoguh coins"})
-    }
+   
     profile.coins -= coinsToDeduct
     await profile.save();
     res.status(200).json({ message: 'Coins deducted successfully' });
