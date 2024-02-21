@@ -46,8 +46,8 @@ export default function Login()  {
 
   return (
     <div className='text-white h-[80vh] flex justify-center items-center  '>
-    <div className='p-3 max-w-lg shadow-lg hover:shadow-white mx-auto border-[1.5px] items-center justify-center  rounded-lg border-black mt-3  hover:shadow-lg hover:scale-105 transition-shadow overflow-hidden  w-full sm:w-[500px] h-[400px] '>
-    <h1 className='font-semibold text-white text-center my-7 text-3xl'>Sign-In<span className='text-yellow-500 font-bold'> Anchors Portal</span></h1>
+    <div className='p-3 max-w-lg shadow-lg hover:shadow-white mx-auto border-[1.5px] items-center justify-center  rounded-lg border-black mt-3  hover:shadow-lg hover:scale-105 transition-shadow overflow-hidden  w-full sm:w-[500px] h-[500px] '>
+    <h1 className='font-semibold text-white text-center flex flex-col my-7 text-3xl'><span className='text-yellow-500 font-bold'> Anchors Portal</span>Sign-In</h1>
     
     <form  onSubmit={handleSubmit} className='flex flex-col gap-4  items-center'>
     
