@@ -75,6 +75,7 @@ const Home = () => {
     
     <div className='flex  overscroll-y-contain  flex-col items-center justify-center mt-10 gap-10 text-white'>
       <h1 className='text-slate-200 text-5xl font-bold '> Your compass in the sea of career opportunities.</h1>
+      <p className='text-xl'>Minimum 50 coins neeed to Apply</p>
       <p className='text-xl'>Get latest job oppenings that suits best suits you!</p>
       
       <Coins  totalCoins={totalcoins} />
