@@ -57,36 +57,20 @@ export const deductcoins=async(req,res,next)=>{
     
     const profile = await profileModel.findOne({userid});
 
-    if(!profile){
+    if(!profile) res.status(404).json({message:"Profile not found"});
 
-        res.status(404).json({message:"Profile not found"});
-    } 
-
-    
+    if(profile.coins <coinsToDeduct){
+        return res.status(400).json({message:"Not enoguh coins"})
+    }
     profile.coins -= coinsToDeduct
     await profile.save();
-    res.status(200).json({ message: 'Coins deducted successfully', coins:profile.coins});
+    res.status(200).json({ message: 'Coins deducted successfully' });
 
 } catch (error) {
     res.status(500).json({ message: 'Internal server error' });
 
 }
 }
-export const getTotalCoins = async (req, res, next) => {
-    try {
-      const { userid } = req.body;
-      const profile = await profileModel.findOne({ userid });
-  
-      if (!profile) {
-        return res.status(404).json({ message: "Profile not found" });
-      }
-  
-      res.status(200).json({ totalCoins: profile.coins });
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ message: "Internal server error" });
-    }
-  };
 export const deleteProfile =async(req,res,next)=>{
     try {
         await profileModel.findOneAndDelete({_id:req.body.profileId})
