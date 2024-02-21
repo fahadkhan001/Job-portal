@@ -3,9 +3,11 @@
 import EarnCoins from './EarnCoins';
 
   export default function Jobcard(props) {
+    const [applies,setApplied] = useState(false);
+
     return (
       <div className='mx-40 mb-4'>
-          <div className='flex justify-between items-center px-6 py-4 bg-zinc-200 rounded-md border border-black shadow-lg hover:border-blue-500 hover:translate-y-1 hover:scale-103'>
+          <div className='flex  overscroll-none scroll-py-24 justify-between items-center px-6 py-4 bg-zinc-200 rounded-md border border-black shadow-lg hover:border-blue-500 hover:translate-y-1 hover:scale-103'>
               <div className='flex flex-col items-start gap-4'>
           
               <h1 className='text-lg font-semibold'>{props.role_name} - {props.company}</h1>

@@ -49,6 +49,7 @@ const res = await axios.post('/api/profile/register',{
   setCoins(res.data.coins);
     
   console.log(coins)
+  navigate('/')
   } catch (error) {
     console.log(error)
   }
