@@ -29,6 +29,7 @@ const profileSchema = new mongoose.Schema({
     },
     schoolcollegetype:{
         type:String,
+        default:"college",
         required:[true,"Type is Required"],
     },
     schoolcollegename:{
@@ -54,6 +55,7 @@ const profileSchema = new mongoose.Schema({
     },
     sologroupproject:{
         type:String,
+        default:"Solo project",
         required:[true,"PLease specify"]
     },
     projectlink:{
@@ -62,6 +64,7 @@ const profileSchema = new mongoose.Schema({
     },
     internship:{
         type:String,
+        default:"Internship",
         required:[true,"Internship is required"]
     },
     companyname:{

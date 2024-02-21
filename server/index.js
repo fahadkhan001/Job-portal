@@ -34,7 +34,7 @@ app.listen(3000,()=>{
 
 app.use('/api/auth',authRouter)
 app.use('/api/user',userRouter)
-app.use('/api/profile',profileRoutes)
+app.use('/api/profile',profileRoutes)   
 
 //middleware
 app.use((err,req,res,next)=>{

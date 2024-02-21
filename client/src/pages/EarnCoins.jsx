@@ -1,33 +1,32 @@
 import React, { useState } from 'react'
 import { FaCoins } from "react-icons/fa6";
-import {Form, Input, Modal, Select, Table, message} from 'antd'
 import { useSelector } from 'react-redux';
+import axios from 'axios'
+import {message} from 'antd'
 
 const EarnCoins = () => {
     const [totalcoins, setTotalcoins] = useState(0);
     const [openModal, setOpenModal] = useState(false);
-    const [formData,setFormData] = useState({
-      name:' ',
-      mobile: ' ',
-
-    })
+    
+    const [formData,setFormData] = useState({})
     const {currentUser}= useSelector((state)=>state.user)
+    
 
- const handleSubmit =async(e)=>{
-  e.preventDefault(); 
-try {
-  const res = await fetch('/api/profile/profile-register',{
-    method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body:JSON.stringify(formData)
-  })
-  const data =await res.json()
-  console.log(data)
-} catch (error) {
-  console.log(error.message)
-}  
+
+ const handleSubmit =async(values)=>{
+  values.preventDefault();
+  try {
+console.log(currentUser._id)
+const res = await axios.post('/api/profile/register',{
+  ...formData, 
+    userid:currentUser._id
+})
+  console.log(res.data)
+
+  } catch (error) {
+    console.log(error)
+  }
+
  }
  const handleChange = (e)=>{
   setFormData({
@@ -47,7 +46,7 @@ try {
         <form className=' flex flex-col gap-3 rounded-lg  w-[500px]' onSubmit={handleSubmit}>
         <label className='flex flex-col gap-2 text-black'>
         Name 
-        <input  name='name' id='  ' className='text-black rounded-lg p-2' type='text' placeholder='Enter Name' onChange={handleChange}  />
+        <input  name='name' id='name' className='text-black rounded-lg p-2' type='text' placeholder='Enter Name' onChange={handleChange}  />
         Mobile
         <input name='mobile' id='mobile'  className='text-black rounded-lg p-2' type='text' placeholder='Enter Mobile' onChange={handleChange} />
         Upload profile
@@ -58,7 +57,7 @@ try {
         <input name='Github' id='Github'  className='text-black  rounded-lg p-2' type='text' placeholder='Enter Github'onChange={handleChange} />
         
         Upload Resume
-        <input name='Resume' id='Resume' className='text-black border  rounded-lg p-2' type='FILE' placeholder='Upload Resume'onChange={handleChange} />
+        <input name='Resume' id='Resume' className='text-black border  rounded-lg p-2' type='file' placeholder='Upload Resume'onChange={handleChange} />
       
         School/College
         <select name='schoolcollegetype' id='schoolcollegetype' className='ml-2' onChange={handleChange}  >
@@ -84,8 +83,8 @@ try {
         Solo Project / Group Project
         
         <select name='sologroupproject' id='sologroupproject' onChange={handleChange} >
-        <option>Group Project</option>
-        <option>Solo Project</option>
+        <option  name='sologroupproject' id='sologroupproject' onChange={handleChange}>Group Project</option>
+        <option  name='sologroupproject' id='sologroupproject' onChange={handleChange}>Solo Project</option>
        
         </select>
         
@@ -94,8 +93,8 @@ try {
         
         Type ( Internship / Job )
         <select name='internship' id='internship' onChange={handleChange}  >
-        <option>Internship</option>
-        <option>Job</option>
+        <option name='internship' id='internship' onChange={handleChange} >Internship</option>
+        <option name='internship' id='internship' onChange={handleChange} >Job</option>
         </select>
 
        
