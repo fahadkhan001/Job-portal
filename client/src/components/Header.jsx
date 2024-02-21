@@ -2,6 +2,8 @@ import React from 'react'
 import { Link,  } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import logo from '../assets/anschor1.avif'
+import { FaCoins } from "react-icons/fa6";
+
 const Header = () => {
   const {currentUser}= useSelector(state=>state.user)
 
@@ -16,12 +18,12 @@ const Header = () => {
             
           </h1>
       </div>
-      <ul className=' flex flex-row gap-3'>
+      <ul className=' flex flex-row gap-4'>
         <Link to={'/'}>
           <li className='hover:bg-yellow-500 text-white text-lg'>Home</li>
         </Link>
         <Link to={'/earn-coins'}>
-        <li className='hover:bg-yellow-500 text-white text-lg'>Earn Coins</li>
+        <li className='hover:bg-yellow-500 flex items-center gap-1 text-white text-lg'>Earn Coins <FaCoins className='text-golden' /></li>
         </Link>
         <Link to={'/profile'}>  
         {currentUser ? (
