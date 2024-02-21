@@ -41,9 +41,10 @@ export const profileRegister= async(req,res,next)=>{
 
 export const getProfile =async(req,res,next)=>{
     try {
-        const allprofile = new profileModel.find({userid:req.body.userid})
-        res.status(200).json(allprofile)
-    } catch (error) {
+        const allprofile = await profileModel.find({userid:req.body.userid})
+        const totalcoins = allprofile.reduce((total,profile)=>total+profile.coins,0)
+        res.status(200).json({totalcoins})
+    } catch (error) {   
         next(errorhandler(500,"Error in getprofile"));
     }
 }
