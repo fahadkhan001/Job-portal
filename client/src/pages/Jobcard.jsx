@@ -1,10 +1,16 @@
-  import React from 'react'
+  import React, { useState } from 'react'
   import { FaCoins } from "react-icons/fa6";
 import EarnCoins from './EarnCoins';
 
   export default function Jobcard(props) {
-    const [applies,setApplied] = useState(false);
+    const [applied,setApplied] = useState(false);
 
+    const handleApply = () => {
+      if (!applied) {
+        props.handleApply(); // Call the handleApply function passed from parent component
+        setApplied(true); // Update state to indicate button has been clicked
+      }
+    };
     return (
       <div className='mx-40 mb-4'>
           <div className='flex  overscroll-none scroll-py-24 justify-between items-center px-6 py-4 bg-zinc-200 rounded-md border border-black shadow-lg hover:border-blue-500 hover:translate-y-1 hover:scale-103'>
@@ -17,8 +23,13 @@ import EarnCoins from './EarnCoins';
               </div>
               <div className='flex flex-col items-center gap-4'>
               <img className='w-[80px] h-[80px] rounded-full object-contain' src={props.logo} alt='logo' />
-                  <button className='bg-blue-800 p-3 border flex items-center gap-2 border-white rounded-lg text-white hover:scale-105 ' onClick={props.handleApply}>Apply using 50 Coins <FaCoins className='text-golden' /></button>
-                  
+              <button
+              className={`bg-blue-800 p-3 border flex items-center gap-2 border-white rounded-lg text-white hover:scale-105 ${applied ? 'cursor-not-allowed opacity-50' : ''}`}
+              onClick={handleApply}
+              disabled={applied} // Disable button if already applied
+            >
+              {applied ? 'Applied' : 'Apply using 50 Coins'} <FaCoins className='text-golden' />
+            </button>                  
               </div>
           </div>
       </div>
