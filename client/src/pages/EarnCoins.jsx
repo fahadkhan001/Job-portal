@@ -52,6 +52,7 @@ const res = await axios.post('/api/profile/register',{
   navigate('/')
   } catch (error) {
     console.log(error)
+    message.error("Fill all the details")
   }
 
  }
