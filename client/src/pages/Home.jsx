@@ -6,6 +6,7 @@ import EarnCoins from './EarnCoins.jsx'
 import { useSelector } from 'react-redux'
 import { message } from 'antd'
 import axios from 'axios'
+import { FaCoins } from "react-icons/fa6";
 
 const Home = () => {
   const {currentUser}= useSelector((state)=>state.user)
@@ -75,8 +76,8 @@ const Home = () => {
     
     <div className='flex  overscroll-y-contain  flex-col items-center justify-center mt-10 gap-10 text-white'>
       <h1 className='text-slate-200 text-5xl font-bold '> Your compass in the sea of career opportunities.</h1>
-      <p className='text-xl'>Minimum 50 coins neeed to Apply</p>
-      <p className='text-xl'>Get latest job oppenings that suits best suits you!</p>
+      <p className='text-xl flex gap-1 items-center font-semibold'>Minimum 50 <FaCoins className='text-golden'  /> coins neeed to Apply </p>
+      <p className='text-xl font-bold'>Get latest job oppenings that suits best suits you!</p>
       
       <Coins  totalCoins={totalcoins} />
     </div>
